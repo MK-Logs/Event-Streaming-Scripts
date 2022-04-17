@@ -19,7 +19,6 @@ if len(argv) != 2 or argv[1] not in DEVICE_PROFILES.keys():
 profile_name = argv[1]
 profile = DEVICE_PROFILES[profile_name]
 
-# Producer Build
 producer = KafkaProducer(bootstrap_servers='localhost:9092')
 
 count = 1
