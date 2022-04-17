@@ -1,10 +1,8 @@
-#Device Simulation, Producing Data for Cluster.
 from kafka import KafkaProducer
 import numpy as np
 from sys import argv, exit
 from time import time, sleep
 
-#Weather Data
 DEVICE_PROFILES = {
 	"boston": {'temp': (51.3, 17.7), 'humd': (77.4, 18.7), 'pres': (1019.9, 9.5) },
 	"denver": {'temp': (49.5, 19.3), 'humd': (33.0, 13.9), 'pres': (1012.0, 41.3) },
@@ -27,15 +25,13 @@ producer = KafkaProducer(bootstrap_servers='localhost:9092')
 count = 1
 
 while True:
-	#Stochastic Process
+
 	temp = np.random.normal(profile['temp'][0], profile['temp'][1])
 	humd = max(0, min(np.random.normal(profile['humd'][0], profile['humd'][1]), 100))
 	pres = np.random.normal(profile['pres'][0], profile['pres'][1])
 	
-	#Creating Structure
 	msg = f'{time()},{profile_name},{temp},{humd},{pres}'
 
-	#Sending Structure
 	producer.send('weather', bytes(msg, encoding='utf8'))
 	print(f'sending data to kafka, #{count}')
 
