@@ -22,7 +22,7 @@ object StreamHandler {
 
 		val inputDF = spark
 			.readStream
-			.format("kafka") // org.apache.spark:spark-sql-kafka-0-10_2.11:2.4.5
+			.format("kafka")
 			.option("kafka.bootstrap.servers", "localhost:9092")
 			.option("subscribe", "weather")
 			.load()
