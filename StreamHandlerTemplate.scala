@@ -4,8 +4,8 @@ import org.apache.spark.sql.streaming._
 import org.apache.spark.sql.types._
 import org.apache.spark.sql.cassandra._
 
-import com.datastax.oss.driver.api.core.uuid.Uuids // com.datastax.cassandra:cassandra-driver-core:4.0.0
-import com.datastax.spark.connector._              // com.datastax.spark:spark-cassandra-connector_2.11:2.4.3
+import com.datastax.oss.driver.api.core.uuid.Uuids 
+import com.datastax.spark.connector._             
 
 case class DeviceData(device: String, temp: Double, humd: Double, pres: Double)
 
